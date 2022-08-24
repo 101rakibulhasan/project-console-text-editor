@@ -19,14 +19,34 @@ int main_func()
     system("CLS");
 
     int num;
-    printf("Welcome To CONSOLE TEXT EDITOR V1\n");
-    printf("Made By Rakibul Hasan\n\n");
+    printf("// Welcome To CONSOLE TEXT EDITOR V1\n");
+    printf("// Made By Rakibul Hasan\n\n");
 
-    printf("1// Create A New File \n");
-    printf("2// Modify Existing File \n");
-    printf("3// Text Utility Tools \n");
-    printf("4// Exit\n\n");
-    printf("P.S //Any Other Number Or Character Will Abort The Application\\\\\n\n");
+printf("    ;dk0KKKKKKKKK0Oxc.   c0KKKKKKKKKKKKKKKKKKKo. ,x0KKKKKKKKKKKO;\n");
+printf("  .xNMMNKOOOO00O0XWMW0; 'xOOOOOO0NMMMWXOOOOO0d.  lWMMN0OOOOOOOOc\n");
+printf("  lWMMO;.       ..dNMMO.        .kMMMWl          lWMMx.\n");
+printf(" .xMMWc           '0WMK,        .xMMMWc          oWMMd\n");
+printf(" .xMMNc           .OWNk'        .xMMMWc          lWMMd\n");
+printf(" .xMMNc           .:c'.         .xMMMWc          oWMMd\n");
+printf(" .xMMNc                         .xMMMWc          oWMMk,''''''..'.\n");
+printf(" .xMMNc                         .xMMMWc          lWMMWNNNNNNNNN0;\n");
+printf(" .xMMNc                         .xMMMWc          oWMMXkkkkkkkkx;\n");
+printf(" .xMMNc                         .xMMMWc          lWMMd\n");
+printf(" .xMMNc            'cxk,        .xMMMWc          oWMMd\n");
+printf(" .xMMNc           .OMMX;        .xMMMNc          oWMMd\n");
+printf(" .dMMWl           ,KMMK,        .xMMMNc          lWMMd\n");
+printf("  :NMMXo;,,,,,,,,cOWMWx.        .xMWMNc          lWMMk;,,,,,,,,,,,,'.\n");
+printf("   :0WMMMWWWWWWWWMMMXd.         .xMMMN:          lWMMMWWWWWWWWWWWWNd.\n");
+printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n");
+
+
+    printf("// Choose What You Want To Do-\n");
+
+    printf("    1. Create A New File \n");
+    printf("    2. Modify Existing File \n");
+    printf("    3. Text Utility Tools \n");
+    printf("    4. Exit\n\n");
+    printf("// Any Other Number Or Character Will Abort The Application \\\\\n\n");
 
     printf("Enter Numbers To Continue: ");
     cin >> num;
