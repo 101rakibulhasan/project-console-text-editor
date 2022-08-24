@@ -19,7 +19,6 @@ int main_func()
     system("CLS");
 
     int num;
-    system("Color B5");
     printf("Welcome To CONSOLE TEXT EDITOR V1\n");
     printf("Made By Rakibul Hasan\n\n");
 
@@ -48,6 +47,8 @@ void count_certain_word(string text);
 void find_word(string text);
 
 void replace_word(string text);
+
+void under_construction();
 
 int main()
 {
@@ -170,6 +171,7 @@ void utility()
     int choice;
     string name, prevtext;
     system("CLS");
+    system("Color 07");
     cout << "Welcome To Text Utility !!!\n";
 
     cout << "Enter the new file name with extension: ";
@@ -312,12 +314,34 @@ void count_certain_word(string text)
 
 }
 
+void under_construction()
+{
+    system("Color 40");
+    cout << "// THIS PART IS STILL UNDER CONSTRUCTION \\\n\n";
+    cout << "Press any key to return HOME - ";
+
+    int choice;
+    cin >> choice;
+
+    switch(choice)
+    {
+        default:
+            cin.clear();
+            fflush(stdin);
+            utility();
+    }
+
+}
+
+
 void find_word(string text)
 {
     system("CLS");
+    under_construction();
 }
 
 void replace_word(string text)
 {
     system("CLS");
+    under_construction();
 }
