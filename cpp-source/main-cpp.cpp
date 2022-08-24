@@ -139,22 +139,14 @@ void modify()
     ifstream read;
     read.open(name);
 
-    if(!read)
+    while(!read)
     {
-        while(1)
-        {
-            system("CLS");
-            if(read)
-            {
-                break;
-            }else
-            {
-                cout << "File doesn't exists !!!\n\n";
-            }
-            cout << "Enter the new file name with extension: ";
-            cin >> name;
-            read.open(name);
-        }
+        system("CLS");
+
+        cout << "File doesn't exists !!!\n\n";
+        cout << "Enter the new file name with extension: ";
+        cin >> name;
+        read.open(name);
     }
 
     cout << "TYPE >> ";
@@ -283,7 +275,7 @@ void total_words(string text)
 
     cout << t_words << endl << endl;
 
-    cout << "// CLICK ANY BUTTON THEN PRESS \"ENTER\" TO RETURN \\ \n";
+    cout << "// CLICK ANY BUTTON THEN PRESS \"ENTER\" TO RETURN \\\\ \n";
 
     int choice;
     cin >> choice;
@@ -319,7 +311,7 @@ void count_certain_word(string text)
 
     cout << t_words << endl << endl;
 
-    cout << "// CLICK ANY BUTTON THEN PRESS \"ENTER\" TO RETURN \\ \n";
+    cout << "// CLICK ANY BUTTON THEN PRESS \"ENTER\" TO RETURN \\\\ \n";
 
     int choice;
     cin >> choice;
@@ -337,7 +329,7 @@ void count_certain_word(string text)
 void under_construction()
 {
     system("Color 40");
-    cout << "// THIS PART IS STILL UNDER CONSTRUCTION \\\n\n";
+    cout << "// THIS PART IS STILL UNDER CONSTRUCTION \\\\\n\n";
     cout << "Press any key to return HOME - ";
 
     int choice;

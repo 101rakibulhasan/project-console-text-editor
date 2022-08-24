@@ -14,14 +14,36 @@ int main_func()
     system("CLS");
 
     int num;
-    printf("Welcome To CONSOLE TEXT EDITOR V1\n");
-    printf("Made By Rakibul Hasan\n\n");
+    printf("// Welcome To CONSOLE TEXT EDITOR V1\n");
+    printf("// Made By Rakibul Hasan\n\n");
 
-    printf("1// Create A New File \n");
-    printf("2// Modify Existing File \n");
-    printf("3// Text Utility Tools \n");
-    printf("4// Exit\n\n");
-    printf("P.S //Any Other Number Or Character Will Abort The Application\\\\\n\n");
+
+printf("    ;dk0KKKKKKKKK0Oxc.   c0KKKKKKKKKKKKKKKKKKKo. ,x0KKKKKKKKKKKO;\n");
+printf("  .xNMMNKOOOO00O0XWMW0; 'xOOOOOO0NMMMWXOOOOO0d.  lWMMN0OOOOOOOOc\n");
+printf("  lWMMO;.       ..dNMMO.        .kMMMWl          lWMMx.\n");
+printf(" .xMMWc           '0WMK,        .xMMMWc          oWMMd\n");
+printf(" .xMMNc           .OWNk'        .xMMMWc          lWMMd\n");
+printf(" .xMMNc           .:c'.         .xMMMWc          oWMMd\n");
+printf(" .xMMNc                         .xMMMWc          oWMMk,''''''..'.\n");
+printf(" .xMMNc                         .xMMMWc          lWMMWNNNNNNNNN0;\n");
+printf(" .xMMNc                         .xMMMWc          oWMMXkkkkkkkkx;\n");
+printf(" .xMMNc                         .xMMMWc          lWMMd\n");
+printf(" .xMMNc            'cxk,        .xMMMWc          oWMMd\n");
+printf(" .xMMNc           .OMMX;        .xMMMNc          oWMMd\n");
+printf(" .dMMWl           ,KMMK,        .xMMMNc          lWMMd\n");
+printf("  :NMMXo;,,,,,,,,cOWMWx.        .xMWMNc          lWMMk;,,,,,,,,,,,,'.\n");
+printf("   :0WMMMWWWWWWWWMMMXd.         .xMMMN:          lWMMMWWWWWWWWWWWWNd.\n");
+printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n");
+
+
+    printf("// Choose What You Want To Do-\n");
+
+
+    printf("    1. Create A New File \n");
+    printf("    2. Modify Existing File \n");
+    printf("    3. Text Utility Tools \n");
+    printf("    4. Exit\n\n");
+    printf("// Any Other Number Or Character Will Abort The Application \\\\\n\n");
 
     printf("Enter Numbers To Continue: ");
     scanf("%d", &num);
@@ -112,63 +134,27 @@ void modify()
     printf( "Enter the new file name with extension: ");
     scanf("%s",name);
 
-//    ifstream read;
-//    read.open(name);
-//
-//    if(!read)
-//    {
-//        while(1)
-//        {
-//            system("CLS");
-//            if(read)
-//            {
-//                break;
-//            }else
-//            {
-//                cout << "File doesn't exists !!!\n\n";
-//            }
-//            cout << "Enter the new file name with extension: ";
-//            cin >> name;
-//            read.open(name);
-//        }
-//    }
-//
-//    cout << "TYPE >> ";
-//    getline(read,prevtext);
-//    cout << prevtext;
-//    cin.ignore();
-//    getline(cin, newtext);
-//
-//    ofstream write;
-//    write.open(name, ios::app);
-//    write << newtext;
-//    write.close();
-
     FILE *fptr;
     fptr = fopen(name,"r+");
 
-    if(fptr == NULL)
+    while(fptr == NULL)
     {
-        while(1)
-        {
-            system("CLS");
-            if(fptr != NULL)
-            {
-                break;
-            }else
-            {
-                printf("File doesn't exists !!!\n\n");
-            }
-            printf("Enter the new file name with extension: ");
-            scanf("%s",name);
-            fptr = fopen(name,"a+");
-        }
+        system("CLS");
+        printf("File doesn't exists !!!\n\n");
+        printf("Enter the new file name with extension: ");
+        scanf("%s",&name);
+        fptr = fopen(name,"r+");
     }
 
     printf("TYPE >> ");
+    fgets(prevtext, 100, fptr);
+    printf("%s", prevtext);
+    fclose(fptr);
+
+    fptr = fopen(name,"a+");
     while(getchar() != '\n');
     scanf("%[^\n]s",newtext);
-    fputs(" " + newtext, fptr);
+    fputs(newtext, fptr);
     fclose(fptr);
 
     printf( "\n\n%s has been modified !!!\n\n", name);
@@ -178,6 +164,7 @@ void modify()
     printf("Y/y = yes\n");
     printf("N/n or Any character = No and Exit Application\n");
     printf("Y / N ? >> ");
+    fflush(stdin);
     scanf("%c",&y_n_choice);
 
     if(y_n_choice == 'Y' || y_n_choice == 'y')
@@ -195,36 +182,32 @@ void utility()
     int choice;
     char name[50], prevtext[100];
     system("CLS");
+    system("Color 07");
     printf("Welcome To Text Utility !!!\n");
 
     printf("Enter the new file name with extension: ");
     scanf("%s",&name);
 
-//    ifstream read;
-//    read.open(name);
-//
-//    if(!read)
-//    {
-//        while(1)
-//        {
-//            system("CLS");
-//            if(read)
-//            {
-//                break;
-//            }else
-//            {
-//                cout << "File doesn't exists !!!\n\n";
-//            }
-//            cout << "Enter file name with extension: ";
-//            cin >> name;
-//            read.open(name);
-//        }
-//    }
+    FILE *fptr;
+    fptr = fopen(name,"r+");
+
+    while(fptr == NULL)
+    {
+        system("CLS");
+        printf("File doesn't exists !!!\n\n");
+        printf("Enter the new file name with extension: ");
+        scanf("%s",&name);
+        fptr = fopen(name,"r+");
+    }
+
+    printf("TYPE >> ");
+    fgets(prevtext, 100, fptr);
+    fclose(fptr);
 
     system("CLS");
 
-    //getline(read,prevtext);
-    printf("READ << %s <<  FILE ENDED\n", prevtext);
+    printf("File Name : %s\n\n", name);
+    printf("READ << %s <<  FILE ENDED\n\n", prevtext);
 
     printf("Enter choice to use the features below -\n\n");
 
@@ -232,9 +215,11 @@ void utility()
     printf("2. Count certain word\n");
     printf("3. Find word\n");
     printf("4. Replace word\n");
-    printf("H. Return to MAINMENU\n");
+    printf("H. Return to MAINMENU\n\n");
 
-    scanf("%d",&choice);
+    printf("TYPE >> ");
+
+    scanf(" %d",&choice);
 
     switch(choice)
     {
@@ -250,8 +235,7 @@ void utility()
         case 4:
             replace_word(prevtext);
         default:
-//            cin.clear();
-//            fflush(stdin);
+            fflush(stdin);
             main();
     }
 
@@ -282,7 +266,7 @@ void total_words(char text[])
 
     printf("%d\n\n",t_words);
 
-    printf("// CLICK ANY BUTTON TO RETURN \\ \n");
+    printf("// CLICK ANY BUTTON THEN PRESS \"ENTER\" TO RETURN \\\\ \n");
 
     int choice;
     scanf("%d",&choice);
@@ -290,8 +274,7 @@ void total_words(char text[])
     switch(choice)
     {
         default:
-//            cin.clear();
-//            fflush(stdin);
+            fflush(stdin);
             utility();
     }
 }
@@ -299,14 +282,78 @@ void total_words(char text[])
 void count_certain_word(char text[])
 {
     system("CLS");
+    char cert_word[100];
+    printf("Enter The Word : ");
+    scanf("%s", &cert_word);
+
+    int i, j, found, count;
+    int stringLen, searchLen;
+
+    stringLen = strlen(text);
+    searchLen = strlen(cert_word);
+
+    count = 0;
+
+    for(i=0; i <= stringLen-searchLen; i++)
+    {
+        found = 1;
+        for(j=0; j<searchLen; j++)
+        {
+            if(text[i + j] != cert_word[j])
+            {
+                found = 0;
+                break;
+            }
+        }
+
+        if(found == 1)
+        {
+            count++;
+        }
+    }
+
+
+    printf("%d\n",count);
+
+    printf("// CLICK ANY BUTTON THEN PRESS \"ENTER\" TO RETURN \\\\ \n");
+
+    int choice;
+    scanf("%d", &choice);
+
+    switch(choice)
+    {
+        default:
+            fflush(stdin);
+            utility();
+    }
+}
+
+void under_construction()
+{
+    system("Color 40");
+    printf("// THIS PART IS STILL UNDER CONSTRUCTION \\\\\n\n");
+    printf("Press any key to return HOME - ");
+
+    int choice;
+    scanf("%d", &choice);
+
+    switch(choice)
+    {
+        default:
+            fflush(stdin);
+            utility();
+    }
+
 }
 
 void find_word(char text[])
 {
     system("CLS");
+    under_construction();
 }
 
 void replace_word(char text[])
 {
     system("CLS");
+    under_construction();
 }
