@@ -8,15 +8,56 @@ struct log
 {
     char date[30];
     char name[30];
-    char tool[10];
 };
 
-//// EXIT FUNCTION ////
-int close()
+// USEFUL FUNCTIONS BEGINS //
+
+int main_func();
+
+void create();
+
+void modify();
+
+void utility();
+
+void log();
+
+void total_words(char text[]);
+
+void count_certain_word(char text[]);
+
+void find_word(char text[]);
+
+void replace_word(char text[], char name[]);
+
+int close();
+
+// USEFUL FUNCTIONS ENDS //
+
+
+//// MAIN FUNCTION ////
+int main()
 {
     system("CLS");
-    printf("Thank You For Using CONSOLE TEXT EDITOR V1!!!\n\n");
-    exit(0);  // Exits The Application
+    switch(main_func())
+    {
+        case 1:
+            create();   // calls CREATE FUNCTION
+            break;
+        case 2:
+            modify();   // calls MODIFY FUNCTION
+            break;
+        case 3:
+            utility();  // calls UTILITY FUNCTION
+            break;
+        case 4:
+            log();    // calls LOG FUNCTION
+        case 5:
+            close();    // calls EXIT FUNCTION
+        default:
+            printf("// Application Aborting... // \n\n");
+    }
+
     return 0;
 }
 
@@ -64,53 +105,6 @@ printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n
     return num;                         //Returns the choice number
 }
 
-// USEFUL FUNCTIONS BEGINS //
-
-void create();
-
-void modify();
-
-void utility();
-
-void log();
-
-void total_words(char text[]);
-
-void count_certain_word(char text[]);
-
-void find_word(char text[]);
-
-void replace_word(char text[], char name[]);
-
-// USEFUL FUNCTIONS ENDS //
-
-
-//// MAIN FUNCTION ////
-int main()
-{
-    system("CLS");
-    switch(main_func())
-    {
-        case 1:
-            create();   // calls CREATE FUNCTION
-            break;
-        case 2:
-            modify();   // calls MODIFY FUNCTION
-            break;
-        case 3:
-            utility();  // calls UTILITY FUNCTION
-            break;
-        case 4:
-            log();    // calls LOG FUNCTION
-        case 5:
-            close();    // calls EXIT FUNCTION
-        default:
-            printf("// Application Aborting... // \n\n");
-    }
-
-    return 0;
-}
-
 //// CREATE FUNCTION ////
 void create()
 {
@@ -141,11 +135,9 @@ void create()
     struct log temp;
     strcpy(temp.name, name);
     strcpy(temp.date, ctime(&t));
-    strcpy(temp.tool, "CREATE");
 
     fwrite(&temp, sizeof(temp), 1, rec);
     fclose(rec);
-
 
     printf("\n\n%s has been saved !!!\n\n", name);
 
@@ -199,21 +191,6 @@ void modify()
     scanf("%[^\n]s",newtext);
     fputs(newtext, fptr); // adds string to the end of file.
     fclose(fptr);  // saves the file
-
-    //put the data in the LOG
-    FILE *rec;
-    rec = fopen("record.log", "a+");
-
-    time_t t;
-    time(&t);
-
-    struct log temp;
-    strcpy(temp.name, name);
-    strcpy(temp.date, ctime(&t));
-    strcpy(temp.tool, "MODIFY");
-
-    fwrite(&temp, sizeof(temp), 1, rec);
-    fclose(rec);
 
     printf( "\n\n%s has been modified !!!\n\n", name);
 
@@ -307,6 +284,9 @@ void utility()
 void log()
 {
     system("CLS");
+
+    printf("Record of the files that has been created - \n");
+
     // For reading logfile
     FILE *rec;
     rec = fopen("record.log", "r");
@@ -317,7 +297,6 @@ void log()
     {
         printf("\n%s    ", temp.date);
         printf("%s  ", temp.name);
-        printf("%s  \n\n", temp.tool);
         flag = 1;
     }
 
@@ -614,20 +593,6 @@ void replace_word(char text[], char name[])
 
         printf("\n// %s has been saved !!!\n", name);
 
-        //put the data in the LOG
-        FILE *rec;
-        rec = fopen("record.log", "a+");
-
-        time_t t;
-        time(&t);
-
-        struct log temp;
-        strcpy(temp.name, name);
-        strcpy(temp.date, ctime(&t));
-        strcpy(temp.tool, "REPLACE");
-
-        fwrite(&temp, sizeof(temp), 1, rec);
-        fclose(rec);
     }
 
 
@@ -645,4 +610,13 @@ void replace_word(char text[], char name[])
             utility();
     }
 
+}
+
+//// EXIT FUNCTION ////
+int close()
+{
+    system("CLS");
+    printf("Thank You For Using CONSOLE TEXT EDITOR V1!!!\n\n");
+    exit(0);  // Exits The Application
+    return 0;
 }
