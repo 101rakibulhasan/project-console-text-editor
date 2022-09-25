@@ -8,6 +8,7 @@ struct log
 {
     char date[30];
     char name[30];
+    char mode[30];
 };
 
 // USEFUL FUNCTIONS BEGINS //
@@ -135,6 +136,7 @@ void create()
     struct log temp;
     strcpy(temp.name, name);
     strcpy(temp.date, ctime(&t));
+    strcpy(temp.mode, "CREATE");
 
     fwrite(&temp, sizeof(temp), 1, rec);
     fclose(rec);
@@ -193,6 +195,20 @@ void modify()
     fclose(fptr);  // saves the file
 
     printf( "\n\n%s has been modified !!!\n\n", name);
+
+    FILE *rec;
+    rec = fopen("record.log", "a+");
+
+    time_t t;
+    time(&t);
+
+    struct log temp;
+    strcpy(temp.name, name);
+    strcpy(temp.date, ctime(&t));
+    strcpy(temp.mode, "MODIFY");
+
+    fwrite(&temp, sizeof(temp), 1, rec);
+    fclose(rec);
 
     // Gets user if the user wants to exit or go to mainmenu
     char y_n_choice;
@@ -297,6 +313,7 @@ void log()
     {
         printf("\n%s    ", temp.date);
         printf("%s  ", temp.name);
+        printf("%s  \n\n", temp.mode);
         flag = 1;
     }
 
