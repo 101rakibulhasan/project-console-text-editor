@@ -33,13 +33,15 @@ void replace_word(char text[], char name[]);
 
 int close();
 
+void cls();
+
 // USEFUL FUNCTIONS ENDS //
 
 
 //// MAIN FUNCTION ////
 int main()
 {
-    system("CLS");
+    cls();
     switch(main_func())
     {
         case 1:
@@ -65,7 +67,7 @@ int main()
 //// HOMEPAGE FUNCTION ////
 int main_func()
 {
-    system("CLS");  // Clears Console Screen
+    cls();  // Clears Console Screen
 
     int num;
     printf("// Welcome To CONSOLE TEXT EDITOR V1 (Supports Only 100 Characters)\n");
@@ -109,7 +111,7 @@ printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n
 //// CREATE FUNCTION ////
 void create()
 {
-    system("CLS");
+    cls();
     char name[50],text[100];
 
     printf( "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE\n");
@@ -164,7 +166,7 @@ void create()
 //// MODIFY FUNCTION ////
 void modify()
 {
-    system("CLS");
+    cls();
     char name[50],newtext[100],prevtext[100];
     printf( "Pressing the \"ENTER\" key will save the file\n\n");
     printf( "Enter the new file name with extension: ");
@@ -176,7 +178,7 @@ void modify()
      // if name is INVALID then loop user input till the file is found
     while(fptr == NULL)
     {
-        system("CLS");
+        cls();
         printf("File doesn't exists !!!\n\n");
         printf("Enter the new file name with extension: ");
         scanf("%s",&name);
@@ -234,7 +236,7 @@ void utility()
 {
     int choice;
     char name[50], prevtext[100];
-    system("CLS");
+    cls();
     system("Color 07"); // changes background color to "BLACK" and foreground color "WHITE"
     printf("// Welcome To Text Utility !!!\n");
 
@@ -247,7 +249,7 @@ void utility()
     // if name is INVALID then loop user input till the file is found
     while(fptr == NULL)
     {
-        system("CLS");
+        cls();
         printf("File doesn't exists !!!\n\n");
         printf("Enter the new file name with extension: ");
         scanf("%s",&name);
@@ -258,7 +260,7 @@ void utility()
     fgets(prevtext, 100, fptr); //read the file in "prevtext" variable
     fclose(fptr);
 
-    system("CLS");
+    cls();
 
     printf("File Name : %s\n\n", name);
     printf("READ << %s <<  FILE ENDED\n\n", prevtext);
@@ -299,7 +301,7 @@ void utility()
 //// LOG ////
 void log()
 {
-    system("CLS");
+    cls();
 
     printf("Record of the files that has been created - \n");
 
@@ -340,7 +342,7 @@ void log()
 //// TOTAL WORD COUNTING FUNCTION ////
 void total_words(char text[])
 {
-    system("CLS");
+    cls();
     printf("TOTAL WORDS -\n");
 
     int t_words = 0;
@@ -379,7 +381,7 @@ void total_words(char text[])
 //// COUNTING SPECIFIC WORD FUNCTION ////
 void count_certain_word(char text[])
 {
-    system("CLS");
+    cls();
     char cert_word[100];
     printf("Enter The Word : ");
     scanf("%s", &cert_word); // the word we will count
@@ -448,7 +450,7 @@ void under_construction()
 //// FIND SPECIFIC WORD FUNCTION ////
 void find_word(char text[])
 {
-    system("CLS");
+    cls();
     char cert_word[100];
     printf("\\\\ The founded word will be all in CAPITALIZED\n\n");
     printf("Enter The Word : ");
@@ -506,7 +508,7 @@ void find_word(char text[])
 //// REPLACE SPECIFIC WORD FUNCTION ////
 void replace_word(char text[], char name[])
 {
-    system("CLS");
+    cls();
     printf("ORIGINAL : %s \n\n", text);
     char rep_word[50], spec_word[50];
     printf("Enter The Word You Want To Replace: ");
@@ -632,8 +634,48 @@ void replace_word(char text[], char name[])
 //// EXIT FUNCTION ////
 int close()
 {
-    system("CLS");
+    cls();
     printf("Thank You For Using CONSOLE TEXT EDITOR V1!!!\n\n");
     exit(0);  // Exits The Application
     return 0;
+}
+
+//// CLEARSCREEN FUNCTION ////
+void cls()
+{
+    //defined using macros and conditions to find os using clear command based on os
+    #ifdef _WIN32
+        system("CLS");
+
+    #elif __APPLE__
+        system("clear");
+
+    #elif __linux__
+        system("clear");
+
+    #elif TARGET_OS_EMBEDDED
+        system("clear");
+
+    #elif TARGET_IPHONE_SIMULATOR
+        system("clear");
+
+    #elif TARGET_OS_IPHONE
+        system("clear");
+
+    #elif TARGET_OS_MAC
+        system("clear");
+
+    #elif__ANDROID__
+        system("clear");
+
+    #elif __unix__
+        system("clear");
+
+    #elif _POSIX_VERSION
+        printf("\e[3J\033c");
+
+    #else
+        printf("Sorry, unknown operating system. This program will not support clearscreen now \n\n\n\n\n");
+    #endif
+        return 0;
 }
