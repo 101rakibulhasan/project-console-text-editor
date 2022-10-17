@@ -15,18 +15,35 @@ class log_class
         string tool;
 };
 
-//// EXIT FUNCTION ////
-int exit()
-{
-    system("CLS");
-    cout << "Thank You For Using CONSOLE TEXT EDITOR V1!!!\n\n";
-    exit(0); // Exits The Application
-}
+// USEFUL FUNCTIONS BEGINS //
+
+void create();
+
+void modify();
+
+void utility();
+
+void log();
+
+void total_words(string text);
+
+void count_certain_word(string text);
+
+void find_word(string text);
+
+void replace_word(string text, string name);
+
+void under_construction();
+int close();
+
+void cls();
+
+// USEFUL FUNCTIONS ENDS //
 
 //// HOMEPAGE FUNCTION ////
 int main_func()
 {
-    system("CLS"); // Clears Console Screen
+    cls(); // Clears Console Screen
 
     int num;
     cout << "// Welcome To CONSOLE TEXT EDITOR V1\n";
@@ -65,34 +82,10 @@ cout << "    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\
     return num;                                 //Returns the choice number
 }
 
-
-// USEFUL FUNCTIONS BEGINS //
-
-void create();
-
-void modify();
-
-void utility();
-
-void log();
-
-void total_words(string text);
-
-void count_certain_word(string text);
-
-void find_word(string text);
-
-void replace_word(string text, string name);
-
-void under_construction();
-
-// USEFUL FUNCTIONS ENDS //
-
-
 //// MAIN FUNCTION ////
 int main()
 {
-    system("CLS");
+    cls();
     switch(main_func())
     {
         case 1:
@@ -107,7 +100,7 @@ int main()
         case 4:
             log();  // calls LOG FUNCTION
         case 5:
-            exit();  // calls EXIT FUNCTION
+            close();  // calls EXIT FUNCTION
         default:
             cout << "// Application Aborting... // \n\n";
     }
@@ -119,7 +112,7 @@ int main()
 //// CREATE FUNCTION ////
 void create()
 {
-    system("CLS");
+    cls();
     string name,text;
 
     cout << "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE\n";
@@ -166,14 +159,14 @@ void create()
         main();
     }else
     {
-        exit();
+        close();
     }
 }
 
 //// MODIFY FUNCTION ////
 void modify()
 {
-    system("CLS");
+    cls();
     string name, newtext, prevtext;
     cout << "Pressing the \"ENTER\" key will save the file\n\n";
     cout << "Enter the new file name with extension: ";
@@ -185,7 +178,7 @@ void modify()
     // if name is INVALID then loop user input till the file is found
     while(!read)
     {
-        system("CLS");
+        cls();
 
         cout << "File doesn't exists !!!\n\n";
         cout << "Enter the new file name with extension: ";
@@ -219,7 +212,7 @@ void modify()
         main();
     }else
     {
-        exit();
+        close();
     }
 
 }
@@ -227,7 +220,7 @@ void modify()
 //// LOG ////
 void log()
 {
-    system("CLS");
+    cls();
     // For reading log file
     ifstream rec;
     rec.open("record.log", ios::in);
@@ -265,7 +258,7 @@ void utility()
 {
     int choice;
     string name, prevtext;
-    system("CLS");
+    cls();
     system("Color 07"); // changes background color to "BLACK" and foreground color "WHITE"
     cout << "// Welcome To Text Utility !!!\n";
 
@@ -280,7 +273,7 @@ void utility()
     {
         while(1)
         {
-            system("CLS");
+            cls();
             if(read)
             {
                 break;
@@ -294,7 +287,7 @@ void utility()
         }
     }
 
-    system("CLS");
+    cls();
 
     getline(read,prevtext); //read the file in "prevtext" variable
     cout<< "File Name : " << name << endl << endl;
@@ -338,7 +331,7 @@ void utility()
 //// TOTAL WORD COUNTING FUNCTION ////
 void total_words(string text)
 {
-    system("CLS");
+    cls();
     cout << "TOTAL WORDS -" << endl;
 
     int t_words = 0;
@@ -378,7 +371,7 @@ void total_words(string text)
 //// COUNTING SPECIFIC WORD FUNCTION ////
 void count_certain_word(string text)
 {
-    system("CLS");
+    cls();
     string cert_word;
     cout << "Enter The Word : ";
     cin >> cert_word; // the word we will count
@@ -436,7 +429,7 @@ void under_construction()
 //// FIND SPECIFIC WORD FUNCTION ////
 void find_word(string text)
 {
-    system("CLS");
+    cls();
     string cert_word;
     printf("\\\\ The founded word will be all in CAPITALIZED\n\n");
     cout << "Enter The Word : ";
@@ -495,7 +488,7 @@ void find_word(string text)
 //// REPLACE SPECIFIC WORD FUNCTION ////
 void replace_word(string text, string name)
 {
-    system("CLS");
+    cls();
     cout << "ORIGINAL : " << text <<" \n\n";
     string rep_word, spec_word;
     cout << "Enter The Word You Want To Replace: ";
@@ -564,4 +557,52 @@ void replace_word(string text, string name)
             utility();
     }
 
+}
+
+//// EXIT FUNCTION ////
+int close()
+{
+    cls();
+    cout << "Thank You For Using CONSOLE TEXT EDITOR V1!!!\n\n";
+    exit(0); // Exits The Application
+}
+
+//// CLEARSCREEN FUNCTION ////
+void cls()
+{
+    //defined using macros and conditions to find os using clear command based on os
+    #ifdef _WIN32
+        system("CLS");
+
+    #elif __APPLE__
+        system("clear");
+
+    #elif __linux__
+        system("clear");
+
+    #elif TARGET_OS_EMBEDDED
+        system("clear");
+
+    #elif TARGET_IPHONE_SIMULATOR
+        system("clear");
+
+    #elif TARGET_OS_IPHONE
+        system("clear");
+
+    #elif TARGET_OS_MAC
+        system("clear");
+
+    #elif__ANDROID__
+        system("clear");
+
+    #elif __unix__
+        system("clear");
+
+    #elif _POSIX_VERSION
+        printf("\e[3J\033c");
+
+    #else
+        printf("Sorry, unknown operating system. This program will not support clearscreen now \n\n\n\n\n");
+    #endif
+        ;
 }
