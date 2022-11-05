@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include<stdlib.h>
 #include <iomanip>
 #include<string.h>
@@ -23,7 +23,7 @@ void modify();
 
 void utility();
 
-void log();
+void history();
 
 void total_words(string text);
 
@@ -72,7 +72,7 @@ cout << "    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\
     cout << "    1. Create A New File \n";
     cout << "    2. Append Existing File \n";   //Displaying Homepage Options
     cout << "    3. Text Utility Tools \n";
-    cout << "    4. Log\n";
+    cout << "    4. History\n";
     cout << "    5. Exit\n\n";
     cout << "// Any Other Number Or Character Will Abort The Application \\\\\n\n";
 
@@ -98,7 +98,7 @@ int main()
             utility(); // calls UTILITY FUNCTION
             break;
         case 4:
-            log();  // calls LOG FUNCTION
+            history();  // calls LOG FUNCTION
         case 5:
             close();  // calls EXIT FUNCTION
         default:
@@ -116,10 +116,11 @@ void create()
     string name,text;
 
     cout << "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE\n";
+    cout << "DISCLAIMER : Non-Existing File with directory will be created in a new directory\n";
     cout << "Don't type the same name as the files in the current folder. It may overwrite those files. Be aware !!!\n\n";
     cout << "Pressing the \"ENTER\" key will save the file\n\n";
-    cout << "Enter the new file name with extension: ";
-    cin >> name;
+    cout << "Enter the new file name (with or without directory) with extension (50 Characters Only): ";
+    getline(cin, name);
 
     ofstream out(name); //Get name string to create file
     cout << "TYPE >> ";
@@ -169,8 +170,10 @@ void modify()
     cls();
     string name, newtext, prevtext;
     cout << "Pressing the \"ENTER\" key will save the file\n\n";
-    cout << "Enter the new file name with extension: ";
-    cin >> name;
+    cout << "Enter the file name (with or without directory) with extension: ";
+
+    cin.ignore();
+    getline(cin, name);
 
     ifstream read;
     read.open(name); //Get name string to read file
@@ -218,7 +221,7 @@ void modify()
 }
 
 //// LOG ////
-void log()
+void history()
 {
     cls();
     // For reading log file

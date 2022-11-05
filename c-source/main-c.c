@@ -21,7 +21,7 @@ void modify();
 
 void utility();
 
-void log();
+void history();
 
 void total_words(char text[]);
 
@@ -54,7 +54,7 @@ int main()
             utility();  // calls UTILITY FUNCTION
             break;
         case 4:
-            log();    // calls LOG FUNCTION
+            history();    // calls LOG FUNCTION
         case 5:
             close();    // calls EXIT FUNCTION
         default:
@@ -98,7 +98,7 @@ printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n
     printf("    1. Create A New File \n");
     printf("    2. Append Existing File \n");   //Displaying Homepage Options
     printf("    3. Text Utility Tools \n");
-    printf("    4. Log\n");
+    printf("    4. History\n");
     printf("    5. Exit\n\n");
     printf("// Any Other Number Or Character Will Abort The Application \\\\\n\n");
 
@@ -115,16 +115,20 @@ void create()
     char name[50],text[100];
 
     printf( "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE\n");
+    printf( "DISCLAIMER : Non-Existing File with directory will be created in a new directory\n");
     printf( "Don't type the same name as the files in the current folder. It may overwrite those files. Be aware !!!\n\n");
     printf( "Pressing the \"ENTER\" key will save the file\n\n");
-    printf( "Enter the new file name with extension: ");
-    scanf("%s",name);
+    printf( "Enter the new file name (with or without directory) with extension (50 Characters Only): ");
+
+    fflush(stdin);
+    scanf("%[^\n]s",name);
 
     FILE *fptr;
     fptr = fopen(name,"w+");  //Get name string to create file
     printf("TYPE >> ");
+
     while(getchar() != '\n'); //Ignores previous input "\n"
-    scanf("%[^\n]s",text); //Ignores until "\n" is received and puts input in "text" variable
+    scanf("%[^\n]s",text);//Ignores until "\n" is received and puts input in "text" variable
     fputs(text, fptr);  // puts input "text" in file
     fclose(fptr);   // saves the file in local directory
 
@@ -169,8 +173,10 @@ void modify()
     cls();
     char name[50],newtext[100],prevtext[100];
     printf( "Pressing the \"ENTER\" key will save the file\n\n");
-    printf( "Enter the new file name with extension: ");
-    scanf("%s",name);
+    printf( "Enter the file name (with or without directory) with extension: ");
+
+    fflush(stdin);
+    scanf("%[^\n]s",name);
 
     FILE *fptr;
     fptr = fopen(name,"r+");  //Get name string to read file
@@ -298,8 +304,8 @@ void utility()
 
 }
 
-//// LOG ////
-void log()
+//// HISTORY ////
+void history()
 {
     cls();
 
