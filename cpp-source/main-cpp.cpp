@@ -77,7 +77,8 @@ cout << "    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\
     cout << "// Any Other Number Or Character Will Abort The Application \\\\\n\n";
 
     cout << "Enter Number To Continue >>  ";
-    cin >> num;                                  //For entering choice
+    cin >> num;
+    fflush(stdin);                                  //For entering choice
 
     return num;                                 //Returns the choice number
 }
@@ -115,11 +116,13 @@ void create()
     cls();
     string name,text;
 
-    cout << "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE\n";
-    cout << "DISCLAIMER : Non-Existing File with directory will be created in a new directory\n";
-    cout << "Don't type the same name as the files in the current folder. It may overwrite those files. Be aware !!!\n\n";
-    cout << "Pressing the \"ENTER\" key will save the file\n\n";
-    cout << "Enter the new file name (with or without directory) with extension (50 Characters Only): ";
+    cout << "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE \n";
+    cout << "1. Newline currently can not be Inserted\n";
+    cout << "1. Non-Existing File with directory will be created in a new directory\n";
+    cout << "2. Typing the same name as the existing file in the directory will overwrite the file.\n\n";
+    cout << "FEATURE : \"ENTER\" key saves the file\n\n";
+    cout << "Enter the new file name (with or without directory) with extension\n";
+    cout << "NAME >> ";
     getline(cin, name);
 
     ofstream out(name); //Get name string to create file

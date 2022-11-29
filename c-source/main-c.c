@@ -3,7 +3,6 @@
 #include<string.h>
 #include<time.h>
 
-
 struct log
 {
     char date[30];
@@ -71,28 +70,19 @@ int main_func()
 
     int num;
     printf("// Welcome To CONSOLE TEXT EDITOR V1 (Supports Only 100 Characters)\n");
-    printf("// Made By Rakibul Hasan\n\n");
+    printf("// Made By Rakibul Hasan (https://github.com/rakibulhasan101/project-console-text-editor)\n\n\n");
 
 
-printf("    ;dk0KKKKKKKKK0Oxc.   c0KKKKKKKKKKKKKKKKKKKo. ,x0KKKKKKKKKKKO;\n");
-printf("  .xNMMNKOOOO00O0XWMW0; 'xOOOOOO0NMMMWXOOOOO0d.  lWMMN0OOOOOOOOc\n");
-printf("  lWMMO;.       ..dNMMO.        .kMMMWl          lWMMx.\n");
-printf(" .xMMWc           '0WMK,        .xMMMWc          oWMMd\n");
-printf(" .xMMNc           .OWNk'        .xMMMWc          lWMMd\n");
-printf(" .xMMNc           .:c'.         .xMMMWc          oWMMd\n");
-printf(" .xMMNc                         .xMMMWc          oWMMk,''''''..'.\n");
-printf(" .xMMNc                         .xMMMWc          lWMMWNNNNNNNNN0;\n");      // ASCII ART DISPLAY ;)
-printf(" .xMMNc                         .xMMMWc          oWMMXkkkkkkkkx;\n");
-printf(" .xMMNc                         .xMMMWc          lWMMd\n");
-printf(" .xMMNc            'cxk,        .xMMMWc          oWMMd\n");
-printf(" .xMMNc           .OMMX;        .xMMMNc          oWMMd\n");
-printf(" .dMMWl           ,KMMK,        .xMMMNc          lWMMd\n");
-printf("  :NMMXo;,,,,,,,,cOWMWx.        .xMWMNc          lWMMk;,,,,,,,,,,,,'.\n");
-printf("   :0WMMMWWWWWWWWMMMXd.         .xMMMN:          lWMMMWWWWWWWWWWWWNd.\n");
-printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n");
-
-
-    printf("// Choose What You Want To Do-\n");
+printf("     .!YG#&@@@&B5?^  P&############&G #############B\n");
+printf("   .J#@@@@&##&@@@@@5 5###B#@@@@#B###P #@@@&B#######G\n");
+printf("  :B@@@#J~:```:!PG7:       @@@@       #@@@         \n");
+printf("  G@@@G.                   @@@@       #@@@5!777777!\n");
+printf("  @@@@?                    @@@@       #@@@@@@@@@@@&.\n");
+printf("  G@@@G.                   @@@@       #@@@5!!!!!!7!\n");
+printf("  :B@@@#J^:...:!PG7:       @@@@       #@@@         \n");
+printf("   .J#@@@@&##&@@@@@5.      @@@@       #@@@&B#######G\n");      // ASCII ART DISPLAY ;)
+printf("     .!YG#&@@@&BP?^        ####       #############B\n\n\n");
+printf("// Choose What You Want To Do-\n");
 
 
     printf("    1. Create A New File \n");
@@ -112,21 +102,22 @@ printf("    .;coddddddddddl:.           .oOxo:.          ,ddddddddddddddddl.\n\n
 void create()
 {
     cls();
-    char name[50],text[100];
+    char name[100],text[1000];
 
-    printf( "DISCLAIMER : OVERWRITE AND NEWLINE ISSUE\n");
-    printf( "DISCLAIMER : Non-Existing File with directory will be created in a new directory\n");
-    printf( "Don't type the same name as the files in the current folder. It may overwrite those files. Be aware !!!\n\n");
-    printf( "Pressing the \"ENTER\" key will save the file\n\n");
-    printf( "Enter the new file name (with or without directory) with extension (50 Characters Only): ");
+    printf("DISCLAIMER : OVERWRITE AND NEWLINE ISSUE \n");
+    printf( "1. Newline currently can not be Inserted\n");
+    printf( "2. Typing the same name as the existing file in the directory will overwrite the file.\n");
+    printf( "3. Directory Example : D://newfolder/newtext.txt\n\n");
+    printf( "TIP: \"ENTER\" key saves the file\n\n");
+    printf( "Enter the new file name (with or without directory) with extension (100 Characters Only)\n");
+    printf( "NAME >> ");
 
-    fflush(stdin);
+    fflush(stdin); //Ignores previous input "\n"
     scanf("%[^\n]s",name);
 
     FILE *fptr;
-    fptr = fopen(name,"w+");  //Get name string to create file
+    fptr = fopen(name,"w");  //Get name string to create file
     printf("TYPE >> ");
-
     while(getchar() != '\n'); //Ignores previous input "\n"
     scanf("%[^\n]s",text);//Ignores until "\n" is received and puts input in "text" variable
     fputs(text, fptr);  // puts input "text" in file
@@ -155,7 +146,8 @@ void create()
     printf("Y/y = yes\n");
     printf("N/n or Any character = No and Exit Application\n");
     printf("Y / N ? >> ");
-    while(getchar() != '\n');
+
+    while(getchar() != '\n'); //Ignores previous input "\n"
     scanf("%c", &y_n_choice);
 
     if(y_n_choice == 'Y' || y_n_choice == 'y')
@@ -175,7 +167,7 @@ void modify()
     printf( "Pressing the \"ENTER\" key will save the file\n\n");
     printf( "Enter the file name (with or without directory) with extension: ");
 
-    fflush(stdin);
+    fflush(stdin); //Ignores previous input "\n"
     scanf("%[^\n]s",name);
 
     FILE *fptr;
@@ -187,6 +179,7 @@ void modify()
         cls();
         printf("File doesn't exists !!!\n\n");
         printf("Enter the new file name with extension: ");
+        while(getchar() != '\n'); //Ignores previous input "\n"
         scanf("%s",&name);
         fptr = fopen(name,"r+");
     }
@@ -197,7 +190,7 @@ void modify()
     fclose(fptr);     // saves the file
 
     fptr = fopen(name,"a+"); // opens the file to append mode
-    while(getchar() != '\n');
+    while(getchar() != '\n'); //Ignores previous input "\n"
     scanf("%[^\n]s",newtext);
     fputs(newtext, fptr); // adds string to the end of file.
     fclose(fptr);  // saves the file
@@ -224,7 +217,7 @@ void modify()
     printf("Y/y = yes\n");
     printf("N/n or Any character = No and Exit Application\n");
     printf("Y / N ? >> ");
-    fflush(stdin);
+    fflush(stdin); //Ignores previous input "\n"
     scanf("%c",&y_n_choice);
 
     if(y_n_choice == 'Y' || y_n_choice == 'y')
@@ -340,7 +333,7 @@ void history()
     switch(choice)
     {
         default:
-            fflush(stdin);    // flush the input stream
+            fflush(stdin); //Ignores previous input "\n"
             main();
     }
 }
@@ -379,7 +372,7 @@ void total_words(char text[])
     switch(choice)
     {
         default:
-            fflush(stdin);    // flush the input stream
+            fflush(stdin); //Ignores previous input "\n"
             utility();
     }
 }
@@ -429,7 +422,7 @@ void count_certain_word(char text[])
     switch(choice)
     {
         default:
-            fflush(stdin);
+            fflush(stdin); //Ignores previous input "\n"
             utility();
     }
 }
@@ -447,7 +440,7 @@ void under_construction()
     switch(choice)
     {
         default:
-            fflush(stdin);
+            fflush(stdin); //Ignores previous input "\n"
             utility();
     }
 
@@ -631,7 +624,7 @@ void replace_word(char text[], char name[])
     switch(any)
     {
         default:
-            fflush(stdin);
+            fflush(stdin); //Ignores previous input "\n"
             utility();
     }
 
